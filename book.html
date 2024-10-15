@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Online Books Library</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="core-style.css" />
     <style>
       .loader {
         border: 16px solid #f3f3f3;
@@ -165,22 +166,92 @@
       </div>
     </div>
 
-    <div class="w-full xl:w-[1024px] mx-0 xl:mx-auto px-2 md:px-4 xl:px-0">
-      <!-- All books -->
-      <div
-        id="book-list"
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-5"
-      ></div>
-      <!-- Loader container -->
-      <div id="loader-container">
-        <!-- Circular loader -->
-        <div class="loader"></div>
+    <div
+      id="book"
+      class="w-full xl:w-[1024px] mx-0 xl:mx-auto px-2 md:px-4 xl:px-0"
+    >
+      <div class="book-details-layout">
+        <img
+          src="/assets/images/Image Not Found.jpg"
+          alt=""
+          class="book-image"
+        />
+        <div class="book-info-area">
+          <div>
+            <p class="title">Title: AAAAAAAAAAAAAAAA</p>
+            <p class="author">Author: BBBBBBBBBBBBB</p>
+            <p class="id">Id: 112222</p>
+          </div>
+          <div>
+            <p>download</p>
+            <p>online</p>
+          </div>
+        </div>
       </div>
-      <button id="previous" style="display: none">Previous</button>
-      <button id="next" style="display: none">Next</button>
     </div>
+
+    <!-- Loader container -->
+    <div id="loader-container">
+      <!-- Circular loader -->
+      <div class="loader"></div>
+    </div>
+
     <!-- Axios via CDN -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="app.js"></script>
+    <script>
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      console.log(urlParams.get("ids"));
+      detail(urlParams.get("ids"));
+      function detail(id) {
+        showLoader();
+        console.log("aaaa", id);
+        // document.getElementById("body").style.display = "none";
+        // document.getElementById("search-result-area").style.display = "none";
+        // document.getElementById("productDetail").style.visibility = "visible";
+
+        axios
+          .get(`https://gutendex.com/books?ids=${id}`)
+          .then(function (response) {
+            console.log(response);
+            // handle success
+            const bookInfo = response.data.data;
+            console.log("single book:", book);
+            const bookDiv = document.getElementById("book");
+            const book = document.createElement("div");
+            book.innerHTML = `
+                                    <div class=" row border border-2 align-items-center justify-content-lg-around">
+                                        <div class="col-12 col-lg-2" style="width: 300px; height: 250px;">
+                                            <img class="w-100 h-100" src="${product.imageUrl}" alt="" srcset="">
+                                        </div>
+                                        <div class="col-12 col-lg-9 py-3">
+                                            <h2>Product Name: ${product.name}</h2>
+                                            <h5>Product Price: ${product.price} tk</h5>
+                                            <p><span class="fw-bolder fs-5">Description: </span> ${product.description}</p>
+                                        </div>
+                                    </div>
+                                            `;
+
+            bookDiv.appendChild(book);
+
+            hideLoader();
+          })
+          .catch(function (error) {
+            console.error("Error fetching data:", error);
+            hideLoader();
+          });
+        // .finally(function () {
+        //   // always executed
+        // });
+      }
+
+      function showLoader() {
+        document.getElementById("loader-container").style.display = "block";
+      }
+
+      function hideLoader() {
+        document.getElementById("loader-container").style.display = "none";
+      }
+    </script>
   </body>
 </html>

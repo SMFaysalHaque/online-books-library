@@ -66,8 +66,17 @@ document.addEventListener("DOMContentLoaded", () => {
               <p style="color: gray;">Author: ${book.authors
                 .map((author) => author.name)
                 .join(", ")}</p>
+                <a href="http://127.0.0.1:5500/book.html?ids=${book.id}">
+                <button onclick="detail('${
+                  book.id
+                }')" style="padding: 2px 6px 2px 6px; background: white; color: black; border: 1px solid #e5e7eb; border-radius: 4px;">Details</button>
+                </a>
             </div>
           `;
+          const detailsButton = bookDiv.querySelector("button"); // Select button
+          detailsButton.addEventListener("click", function () {
+            detail(book.id);
+          });
           bookListDiv.appendChild(bookDiv);
         });
 
@@ -94,6 +103,43 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("Error fetching data:", error);
         hideLoader();
       });
+  }
+
+  function detail(id) {
+    console.log("aaaa", id);
+    // document.getElementById("body").style.display = "none";
+    // document.getElementById("search-result-area").style.display = "none";
+    // document.getElementById("productDetail").style.visibility = "visible";
+
+    axios.get(`https://gutendex.com/books?ids=${id}`).then(function (response) {
+      console.log(response);
+      // handle success
+      // const product = response.data.data;
+      // console.log("AAA:", product);
+      // let cardDogDiv = document.createElement("div");
+      // cardDogDiv.innerHTML = `
+      //                         <div class=" row border border-2 align-items-center justify-content-lg-around">
+      //                             <div class="col-12 col-lg-2" style="width: 300px; height: 250px;">
+      //                                 <img class="w-100 h-100" src="${product.imageUrl}" alt="" srcset="">
+      //                             </div>
+      //                             <div class="col-12 col-lg-9 py-3">
+      //                                 <h2>Product Name: ${product.name}</h2>
+      //                                 <h5>Product Price: ${product.price} tk</h5>
+      //                                 <p><span class="fw-bolder fs-5">Description: </span> ${product.description}</p>
+      //                             </div>
+      //                         </div>
+      //                                 `;
+      // document
+      //   .getElementsByClassName("product-detail")[0]
+      //   .appendChild(cardDogDiv);
+    });
+    // .catch(function (error) {
+    //   // handle error
+    //   console.log(error);
+    // })
+    // .finally(function () {
+    //   // always executed
+    // });
   }
 
   fetchBooks(nextPageUrl);
