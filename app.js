@@ -51,14 +51,23 @@ document.addEventListener("DOMContentLoaded", () => {
       .get(url)
       .then(function (response) {
         const books = response.data.results;
+        console.log(books);
         const bookListDiv = document.getElementById("book-list");
 
         books.forEach((book) => {
+          const imageUrl =
+            book.formats["image/jpeg"] || "/assets/images/Image Not Found.jpg";
+
           const bookDiv = document.createElement("div");
-          bookDiv.innerHTML = `<h3>${book.title}</h3>
-                                 <p>Author: ${book.authors
-                                   .map((author) => author.name)
-                                   .join(", ")}</p>`;
+          bookDiv.innerHTML = `
+            <div style="height: 450px; padding: 10px; background-color: white; border: 1px solid #e5e7eb; border-radius: 8px;">
+              <img src="${imageUrl}" alt="" style="height: 150px; width: 100px; border-radius: 4px;" />
+              <h3 style="font-size: 18px; margin-top: 10px;">${book.title}</h3>
+              <p style="color: gray;">Author: ${book.authors
+                .map((author) => author.name)
+                .join(", ")}</p>
+            </div>
+          `;
           bookListDiv.appendChild(bookDiv);
         });
 

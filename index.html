@@ -223,14 +223,20 @@
       </button>
     </div>
 
-    <div id="book-list"></div>
-    <!-- Loader container -->
-    <div id="loader-container">
-      <!-- Circular loader -->
-      <div class="loader"></div>
+    <div class="w-full xl:w-[1024px] mx-0 xl:mx-auto px-2 md:px-4 xl:px-0">
+      <!-- All books -->
+      <div
+        id="book-list"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-5"
+      ></div>
+      <!-- Loader container -->
+      <div id="loader-container">
+        <!-- Circular loader -->
+        <div class="loader"></div>
+      </div>
+      <button id="previous" style="display: none">Previous</button>
+      <button id="next" style="display: none">Next</button>
     </div>
-    <button id="previous" style="display: none">Previous</button>
-    <button id="next" style="display: none">Next</button>
     <!-- Axios via CDN -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="app.js"></script>
