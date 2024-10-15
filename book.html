@@ -206,9 +206,6 @@
       function detail(id) {
         showLoader();
         console.log("aaaa", id);
-        // document.getElementById("body").style.display = "none";
-        // document.getElementById("search-result-area").style.display = "none";
-        // document.getElementById("productDetail").style.visibility = "visible";
 
         axios
           .get(`https://gutendex.com/books?ids=${id}`)
