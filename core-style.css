@@ -24,6 +24,33 @@
   margin: 300px 0px;
 }
 
+/* pagination */
+.pagination-btn {
+  background-color: #fb923c;
+  font-weight: 500;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.pagination-btn[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination-btn:hover:not([disabled]) {
+  background-color: #f97316;
+}
+
+.pagination-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0px;
+}
+/*  */
+
 /* main body */
 .main-body {
   width: 100%;

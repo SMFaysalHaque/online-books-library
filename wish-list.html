@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Books Library</title>
+    <link rel="stylesheet" href="core-style.css" />
+    <link href="assets/output.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- navbar -->
+    <div id="navbar"></div>
+
+    <!-- Axios via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- Load the navbar content -->
+    <script>
+      fetch("navbar.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("navbar").innerHTML = data;
+          // After loading the navbar, run navbar.js
+          const script = document.createElement("script");
+          script.src = "navbar.js";
+          document.body.appendChild(script);
+        })
+        .catch((error) => console.log(error));
+    </script>
+
+    <script src="wish-list.js"></script>
+  </body>
+</html>
