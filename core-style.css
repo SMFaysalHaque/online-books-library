@@ -21,11 +21,91 @@
 #loader-container {
   display: none;
   text-align: center;
+  margin: 300px 0px;
+}
+
+/* main body */
+.main-body {
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+/* Extra-large screen styles */
+@media (min-width: 1280px) {
+  .main-body {
+    width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* Medium screen styles */
+@media (min-width: 768px) {
+  .main-body {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+/* book body */
+.book-body {
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+/* Extra-large screen styles */
+@media (min-width: 1280px) {
+  .book-body {
+    width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* Medium screen styles */
+@media (min-width: 768px) {
+  .book-body {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+/* book list */
+#book-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+  #book-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  #book-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 /* navbar */
 .navbar-layout {
   width: 100%;
+  position: fixed;
+  top: 0;
   background-color: #fb923c;
   padding: 8px 0px;
 }
@@ -133,6 +213,22 @@
   position: relative;
 }
 
+#navbar-menu-dropdown {
+  display: none;
+  background: white;
+  position: absolute;
+  right: 0;
+  margin-top: 7px;
+  padding: 4px 8px;
+  width: 200px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.small-screen-menu-text {
+  padding: 6px 8px;
+}
+
 .navbar-menu-dropdown-btn {
   display: flex;
   align-items: center;
@@ -179,15 +275,13 @@
 }
 
 #dropdownButton2 {
-  display: none;
-  position: absolute;
-  right: 0;
-  background-color: #ffffff;
-  color: #000000;
-  border: 1px solid rgba(128, 128, 128, 0.164);
-  border-radius: 6px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  width: 95%;
+  display: block;
+  width: 100%;
+  padding: 6px 8px;
+}
+
+.categories-btn {
+  display: flex;
 }
 
 #dropdownMenu ul {
@@ -196,10 +290,15 @@
   margin: 0;
 }
 
-#dropdownMenu2 ul {
-  list-style-type: none;
+#dropdownMenu2 {
+  display: none;
+  width: 95%;
+  position: absolute;
+  right: 0;
+  background: white;
   padding: 0;
-  margin: 0;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.329);
 }
 
 #dropdownMenu li {

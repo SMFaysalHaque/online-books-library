@@ -1,5 +1,16 @@
 // navbar.js
 
+const menu = document.getElementById("small-screen-menu");
+const menuDetail = document.getElementById("navbar-menu-dropdown");
+
+menu?.addEventListener("click", (event) => {
+  if (menuDetail.style.display === "none" || menuDetail.style.display === "") {
+    menuDetail.style.display = "block";
+  } else {
+    menuDetail.style.display = "none";
+  }
+});
+
 // Dropdown for large view
 const dropdownButton = document.getElementById("dropdownButton");
 const dropdownMenu = document.getElementById("dropdownMenu");

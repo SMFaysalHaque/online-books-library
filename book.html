@@ -8,112 +8,11 @@
     <link href="assets/output.css" rel="stylesheet" />
   </head>
   <body>
-    <div class="navbar-layout">
-      <div class="navbar-layout-position">
-        <p class="navbar-log-text">eBooks</p>
-        <div class="navbar-search">
-          <input
-            type="text"
-            class="navbar-search-input"
-            placeholder="Search books...."
-          />
-          <button class="navbar-search-btn">Search</button>
-        </div>
+    <!-- navbar -->
+    <div id="navbar"></div>
 
-        <div class="navbar-menu">
-          <a href="http://127.0.0.1:5500/index.html">
-            <button class="navbar-menu-text">Home</button>
-          </a>
-          <button class="navbar-menu-text">Wishlist</button>
-          <div class="navbar-menu-dropdown">
-            <button id="dropdownButton" class="navbar-menu-dropdown-btn">
-              <p class="navbar-menu-text">Categories</p>
-              <div class="pt-1">
-                <svg width="12" height="12" viewBox="0 0 12 8" fill="none">
-                  <path
-                    d="M5.99953 7.03819L0.345703 1.38439L1.39953 0.330566L5.99953 4.93057L10.5995 0.330566L11.6534 1.38439L5.99953 7.03819Z"
-                  />
-                </svg>
-              </div>
-            </button>
-            <div id="dropdownMenu">
-              <ul>
-                <li>Children</li>
-                <li>Fiction</li>
-                <li>Drama</li>
-                <li>History</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="navbar-menu-mobile-tab-layout">
-          <input type="checkbox" id="dropdownToggle" class="hidden" />
-          <label for="dropdownToggle" class="cursor-pointer">
-            <svg width="24" height="24" fill="none">
-              <path
-                d="M19.5 0.923828H4.5C2.01563 0.923828 0 2.93945 0 5.42383V17.6546C0 20.139 2.01563 22.1546 4.5 22.1546H19.5C21.9844 22.1546 24 20.139 24 17.6546V5.42383C24 2.93945 21.9844 0.923828 19.5 0.923828ZM20.3077 17.5392C20.3077 18.0476 19.893 18.4623 19.3846 18.4623H4.61538C4.10697 18.4623 3.69231 18.0476 3.69231 17.5392V16.6161C3.69231 16.1077 4.10697 15.6931 4.61538 15.6931H19.3846C19.893 15.6931 20.3077 16.1077 20.3077 16.6161V17.5392ZM20.3077 12.0008C20.3077 12.5092 19.893 12.9238 19.3846 12.9238H4.61538C4.10697 12.9238 3.69231 12.5092 3.69231 12.0008V11.0777C3.69231 10.5693 4.10697 10.1546 4.61538 10.1546H19.3846C19.893 10.1546 20.3077 10.5693 20.3077 11.0777V12.0008ZM20.3077 6.46229C20.3077 6.9707 19.893 7.38537 19.3846 7.38537H4.61538C4.10697 7.38537 3.69231 6.9707 3.69231 6.46229V5.53921C3.69231 5.0308 4.10697 4.61614 4.61538 4.61614H19.3846C19.893 4.61614 20.3077 5.0308 20.3077 5.53921V6.46229Z"
-                fill="black"
-              />
-            </svg>
-          </label>
-          <div class="dropdown-menu">
-            <div class="menu-items" role="menu">
-              <a href="http://127.0.0.1:5500/index.html" class="menu-link"
-                >Home</a
-              >
-              <a href="#" class="menu-link">Wishlist</a>
-              <!-- <div class="dropdown-container">
-                <button id="dropdownButton2" class="dropdown-button">
-                  <p class="dropdown-label">Categories</p>
-                  <div class="dropdown-arrow">
-                    <svg width="12" height="12">
-                      <path
-                        d="M5.99953 7.03819L0.345703 1.38439L1.39953 0.330566L5.99953 4.93057L10.5995 0.330566L11.6534 1.38439L5.99953 7.03819Z"
-                        class="arrow-fill"
-                      />
-                    </svg>
-                  </div>
-                </button>
-                <div id="dropdownMenu2" class="dropdown-menu-items">
-                  <ul>
-                    <li>Fiction</li>
-                    <li>Drama</li>
-                    <li>History</li>
-                    <li>Children</li>
-                  </ul>
-                </div>
-              </div> -->
-              <div class="navbar-menu-dropdown">
-                <button id="dropdownButton2" class="navbar-menu-dropdown-btn">
-                  <p class="navbar-menu-text">Categories</p>
-                  <div class="pt-1">
-                    <svg width="12" height="12" viewBox="0 0 12 8" fill="none">
-                      <path
-                        d="M5.99953 7.03819L0.345703 1.38439L1.39953 0.330566L5.99953 4.93057L10.5995 0.330566L11.6534 1.38439L5.99953 7.03819Z"
-                      />
-                    </svg>
-                  </div>
-                </button>
-                <div id="dropdownMenu2">
-                  <ul>
-                    <li>Children</li>
-                    <li>Fiction</li>
-                    <li>Drama</li>
-                    <li>History</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div
-      id="book"
-      class="w-full xl:w-[1024px] mx-0 xl:mx-auto px-2 md:px-4 xl:px-0"
-    ></div>
+    <!-- book -->
+    <div id="book" class="book-body" style="margin-top: 70px"></div>
 
     <!-- Loader container -->
     <div id="loader-container">
@@ -123,6 +22,19 @@
 
     <!-- Axios via CDN -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- Load the navbar content -->
+    <script>
+      fetch("navbar.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("navbar").innerHTML = data;
+          // After loading the navbar, run navbar.js
+          const script = document.createElement("script");
+          script.src = "navbar.js";
+          document.body.appendChild(script);
+        })
+        .catch((error) => console.log(error));
+    </script>
     <script src="book.js"></script>
   </body>
 </html>

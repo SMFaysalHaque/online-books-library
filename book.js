@@ -65,36 +65,4 @@ document.addEventListener("DOMContentLoaded", () => {
   function hideLoader() {
     document.getElementById("loader-container").style.display = "none";
   }
-
-  //  dropdown for large view
-  const dropdownButton = document.getElementById("dropdownButton");
-  const dropdownMenu = document.getElementById("dropdownMenu");
-
-  dropdownButton.addEventListener("click", (event) => {
-    event.stopPropagation();
-    if (
-      dropdownMenu.style.display === "none" ||
-      dropdownMenu.style.display === ""
-    ) {
-      dropdownMenu.style.display = "block";
-    } else {
-      dropdownMenu.style.display = "none";
-    }
-  });
-
-  //  dropdown for mobile and tab view
-  const dropdownButton2 = document.getElementById("dropdownButton2");
-  const dropdownMenu2 = document.getElementById("dropdownMenu2");
-
-  dropdownButton2.addEventListener("click", (event) => {
-    event.stopPropagation();
-    if (
-      dropdownMenu2.style.display === "none" ||
-      dropdownMenu2.style.display === ""
-    ) {
-      dropdownMenu2.style.display = "block";
-    } else {
-      dropdownMenu2.style.display = "none";
-    }
-  });
 });
