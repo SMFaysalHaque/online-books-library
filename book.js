@@ -1,11 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  console.log(urlParams.get("ids"));
   detail(urlParams.get("ids"));
+
   function detail(id) {
     showLoader();
-    console.log("aaaa", id);
 
     axios
       .get(`https://gutendex.com/books?ids=${id}`)

@@ -79,6 +79,93 @@
   }
 }
 
+/* wishlist */
+#wishlists {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 50px;
+}
+
+[id^="wishlist-layout-"] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+  height: 200px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.356);
+  border-radius: 6px;
+  padding: 8px;
+}
+
+@media screen and (max-width: 480px) {
+  [id^="wishlist-layout-"] {
+    height: fit-content;
+    padding: 16px;
+  }
+}
+
+#wishlist-img {
+  width: 150px;
+  height: 100%;
+  border-radius: 4px;
+}
+
+@media screen and (max-width: 480px) {
+  #wishlist-img {
+    width: 100%;
+    height: 500px;
+  }
+}
+
+#no-wish {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  gap: 16px;
+  text-align: center;
+  font-weight: 900;
+  font-size: 2rem;
+  color: #333;
+}
+
+#no-wish img {
+  width: 50px;
+  height: auto;
+  animation: shake 0.5s ease-in-out infinite;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  #no-wish {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #no-wish {
+    font-size: 1.2rem;
+  }
+}
+
 /* book body */
 .book-body {
   width: 100%;
@@ -256,6 +343,71 @@
   padding: 6px 8px;
 }
 
+#wishlist-large {
+  padding: 6px 8px;
+  position: relative;
+}
+
+#wishlist-large::after {
+  display: none;
+  content: "";
+  position: absolute;
+  top: 4px;
+  right: -2px;
+  width: 8px;
+  height: 8px;
+  background-color: red;
+  border-radius: 50%;
+}
+
+/* Show the red dot if the button has the "has-items" class */
+#wishlist-large.has-items::after {
+  display: block;
+}
+
+#wishlist-small {
+  padding: 6px 8px;
+  position: relative;
+}
+
+#wishlist-small::after {
+  display: none;
+  content: "";
+  position: absolute;
+  top: 4px;
+  right: -2px;
+  width: 8px;
+  height: 8px;
+  background-color: red;
+  border-radius: 50%;
+}
+
+/* Show the red dot if the button has the "has-items" class */
+#wishlist-small.has-items::after {
+  display: block;
+}
+
+/*  */
+.suggestions-dropdown {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  display: none; /* Hidden initially */
+}
+
+.suggestions-dropdown p {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestions-dropdown p:hover {
+  background-color: #f0f0f0;
+}
+/*  */
+
 .navbar-menu-dropdown-btn {
   display: flex;
   align-items: center;
@@ -352,7 +504,7 @@
   text-align: left;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
   .navbar-menu-mobile-tab-layout {
     position: relative;
     display: inline-block;

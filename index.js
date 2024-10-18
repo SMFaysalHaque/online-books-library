@@ -6,12 +6,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function showLoader() {
     document.getElementById("loader-container").style.display = "block";
-    document.querySelector(".pagination-buttons").style.display = "none"; // Hide pagination buttons
+    document.querySelector(".pagination-buttons").style.display = "none";
   }
 
   function hideLoader() {
     document.getElementById("loader-container").style.display = "none";
-    document.querySelector(".pagination-buttons").style.display = "flex"; // Show pagination buttons
+    document.querySelector(".pagination-buttons").style.display = "flex";
   }
 
   function fetchBooks(url) {
@@ -88,12 +88,14 @@ document.addEventListener("DOMContentLoaded", () => {
     wishlists.push(book);
     localStorage.setItem("wishlists", JSON.stringify(wishlists));
     updateButton(book.id);
+    updateWishlistDot();
   }
 
   function remove(bookId) {
     wishlists = wishlists.filter((book) => book.id !== bookId);
     localStorage.setItem("wishlists", JSON.stringify(wishlists));
     updateButton(bookId);
+    updateWishlistDot();
   }
 
   function updateButton(bookId) {

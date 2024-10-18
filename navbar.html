@@ -6,17 +6,21 @@
       <input
         type="text"
         class="navbar-search-input"
+        id="searchInput"
         placeholder="Search books...."
       />
       <button class="navbar-search-btn">Search</button>
     </div>
+
+    <!-- Add this suggestion dropdown -->
+    <div id="suggestionsDropdown" class="suggestions-dropdown"></div>
 
     <div class="navbar-menu">
       <a href="http://127.0.0.1:5500/index.html">
         <button class="navbar-menu-text">Home</button>
       </a>
       <a href="http://127.0.0.1:5500/wish-list.html">
-        <button class="navbar-menu-text">Wishlist</button>
+        <button id="wishlist-large" class="navbar-menu-text">Wishlist</button>
       </a>
       <div class="navbar-menu-dropdown">
         <button id="dropdownButton" class="navbar-menu-dropdown-btn">
@@ -31,10 +35,12 @@
         </button>
         <div id="dropdownMenu">
           <ul>
-            <li>Children</li>
-            <li>Fiction</li>
-            <li>Drama</li>
-            <li>History</li>
+            <li id="children">Children</li>
+            <li id="fiction">Fiction</li>
+            <li id="drama">Drama</li>
+            <li id="history">History</li>
+            <li id="romance">Romance</li>
+            <li id="science">Science</li>
           </ul>
         </div>
       </div>
@@ -47,7 +53,9 @@
           <button class="small-screen-menu-text">Home</button>
         </a>
         <a href="http://127.0.0.1:5500/wish-list.html" style="display: block">
-          <button class="small-screen-menu-text">Wishlist</button>
+          <button id="wishlist-small" class="small-screen-menu-text">
+            Wishlist
+          </button>
         </a>
         <button
           id="dropdownButton2"
@@ -59,10 +67,12 @@
           </div>
         </button>
         <ul id="dropdownMenu2">
-          <li>Children</li>
-          <li>Fiction</li>
-          <li>Drama</li>
-          <li>History</li>
+          <li id="children">Children</li>
+          <li id="fiction">Fiction</li>
+          <li id="drama">Drama</li>
+          <li id="history">History</li>
+          <li id="romance">Romance</li>
+          <li id="science">Science</li>
         </ul>
       </div>
     </div>

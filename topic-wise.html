@@ -3,24 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Online Books Library</title>
+    <title>Topic-Wise Books</title>
     <link rel="stylesheet" href="core-style.css" />
     <link href="assets/output.css" rel="stylesheet" />
   </head>
   <body>
     <!-- navbar -->
     <div id="navbar"></div>
-
-    <div id="wishlists" class="main-body" style="margin-top: 90px"></div>
-    <!-- Loader container -->
-    <div id="loader-container">
-      <div class="loader"></div>
+    <!-- main body -->
+    <div class="main-body">
+      <!-- All books -->
+      <div id="book-list" style="margin-top: 70px"></div>
+      <!-- Loader container -->
+      <div id="loader-container">
+        <div class="loader"></div>
+      </div>
     </div>
 
     <!-- Axios via CDN -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-    <!-- Load the navbar content -->
     <script>
       fetch("navbar.html")
         .then((response) => response.text())
@@ -33,7 +35,6 @@
         })
         .catch((error) => console.log(error));
     </script>
-
-    <script src="wish-list.js"></script>
+    <script src="topic-wise.js"></script>
   </body>
 </html>
