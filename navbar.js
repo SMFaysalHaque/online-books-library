@@ -65,7 +65,7 @@ dropdownMenuElement2.addEventListener("click", (event) => {
 
 function showLoader() {
   const loader = document.getElementById("loader-container-search");
-  if (loader.style.display === "none") {
+  if (loader.style.display === "none" || loader.style.display === "") {
     loader.style.display = "block";
   }
 }
