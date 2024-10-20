@@ -15,8 +15,10 @@ function hideLoader() {
   document.getElementById("loader-container").style.display = "none";
 }
 
+let topic = "";
+
 window.onload = function () {
-  const topic = getQueryParam("topic");
+  topic = getQueryParam("topic");
   console.log(topic);
 
   if (topic) {
@@ -28,9 +30,10 @@ window.onload = function () {
   }
 };
 
+showLoader();
+
 function fetchTopic(topic) {
   const apiUrl = `https://gutendex.com/books?topic=${topic}`;
-  showLoader();
   axios
     .get(apiUrl)
     .then(function (response) {
@@ -58,7 +61,7 @@ function displayBooks(books) {
       bookDiv.innerHTML = `
           <div class="card-layout">
             <div>
-              <h1 style="font-weight: 700;">${topic}</h1>
+              <h1 style="font-weight: 700; margin-bottom: 20px;">${topic}</h1>
               <img class="card-layout-img" src="${imageUrl}" alt="${
         book.title
       }" />
