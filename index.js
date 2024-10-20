@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
               </p>
             </div>
             <div style="display: flex; gap: 8px;">
-              <a href="http://127.0.0.1:5500/book.html?ids=${bookId}">
+              <a href="book.html?ids=${bookId}">
                 <button class="card-detail-btn">Details</button>
               </a>
               <button id="wishlist-btn-${bookId}" class="wishlist-btn">

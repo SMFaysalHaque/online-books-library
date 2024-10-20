@@ -17,6 +17,7 @@ function hideLoader() {
 
 window.onload = function () {
   const topic = getQueryParam("topic");
+  console.log(topic);
 
   if (topic) {
     fetchTopic(topic);
@@ -57,6 +58,7 @@ function displayBooks(books) {
       bookDiv.innerHTML = `
           <div class="card-layout">
             <div>
+              <h1 style="font-weight: 700;">${topic}</h1>
               <img class="card-layout-img" src="${imageUrl}" alt="${
         book.title
       }" />

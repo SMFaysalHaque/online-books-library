@@ -7,9 +7,55 @@
   height: 120px;
   animation: spin 2s linear infinite;
   margin: 20px auto;
+  z-index: -1;
 }
 
 @keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* .loader {
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #fb923c;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} */
+
+.loader-search {
+  border: 12px solid #ffffff;
+  border-top: 12px solid #fb923c;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin-search 2s linear infinite;
+  margin: 200px auto;
+  z-index: 4;
+}
+
+@media screen and (max-width: 480px) {
+  .loader-search {
+    margin: 200px auto;
+  }
+}
+
+@keyframes spin-search {
   0% {
     transform: rotate(0deg);
   }
@@ -22,6 +68,20 @@
   display: none;
   text-align: center;
   margin: 300px 0px;
+}
+
+#loader-container-search {
+  position: absolute;
+  display: none;
+  width: 500px;
+  height: 500px;
+}
+
+@media screen and (max-width: 480px) {
+  #loader-container-search {
+    width: 200px;
+    height: 500px;
+  }
 }
 
 /* pagination */
@@ -222,6 +282,7 @@
   top: 0;
   background-color: #fb923c;
   padding: 8px 0px;
+  z-index: 1;
 }
 
 .navbar-layout-position {
@@ -260,39 +321,42 @@
 }
 
 .navbar-search {
-  display: none;
+  display: block;
+}
+
+/* @media (min-width: 768px) {
+  .navbar-search {
+    display: block;
+  }
+} */
+
+.navbar-search-mobile {
+  display: block;
+  margin: 0px 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.356);
+  border-radius: 6px;
 }
 
 @media (min-width: 768px) {
-  .navbar-search {
-    display: block;
+  .navbar-search-mobile {
+    display: none;
   }
 }
 
 .navbar-search-input {
-  width: 300px;
+  width: 500px;
   padding: 8px;
   outline: none;
   border-radius: 4px;
 }
 
-.navbar-search-btn {
-  font-weight: 600;
-  background-color: #ffffff;
-  padding-left: 12px;
-  padding-right: 12px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  color: #111827;
-  border-radius: 4px;
-  transition: all 0.2s ease-in-out;
-  transform: scale(1);
-}
-
-.navbar-search-btn:hover {
-  background-color: #f97316;
-  color: #ffffff;
-  font-weight: 600;
+@media screen and (max-width: 480px) {
+  .navbar-search-input {
+    width: 100%;
+    padding: 8px;
+    outline: none;
+    border-radius: 4px;
+  }
 }
 
 .navbar-menu {
@@ -387,24 +451,78 @@
   display: block;
 }
 
-/*  */
-.suggestions-dropdown {
+/* search book */
+#book-info {
+  display: none;
+  flex-direction: column;
+  gap: 16px;
   position: absolute;
-  background-color: white;
-  border: 1px solid #ccc;
+  top: 55px;
+  padding: 8px;
+  width: 500px;
+  height: 500px;
+  background-color: whitesmoke;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: scroll;
+  z-index: -1;
+}
+
+@media screen and (max-width: 480px) {
+  #book-info {
+    top: 55px;
+    right: -10px;
+    margin: 0px 16px;
+    width: 97%;
+    height: 500px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow-y: scroll;
+  }
+}
+
+/* #search-books {
+} */
+
+.book-data {
+  display: flex;
+  gap: 12px;
   width: 100%;
-  max-height: 200px;
-  overflow-y: auto;
-  display: none; /* Hidden initially */
+  height: 50px;
+  padding: 6px;
+  border-radius: 6px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
 }
 
-.suggestions-dropdown p {
-  padding: 10px;
-  cursor: pointer;
+.book-data img {
+  width: 30px;
+  height: 100%;
 }
 
-.suggestions-dropdown p:hover {
-  background-color: #f0f0f0;
+#book-data-btn {
+  font-size: xx-small;
+  border: 1px solid black;
+  padding: 1px 4px;
+  border-radius: 2px;
+}
+
+#book-data-btn:hover {
+  font-size: xx-small;
+  color: white;
+  border: 1px solid #fb923c;
+  background-color: #fb923c;
+  padding: 1px 4px;
+}
+
+#book-data-title {
+  font-size: xx-small;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: box; /* Fallback for non-WebKit browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
 }
 /*  */
 
@@ -657,6 +775,7 @@ input:checked ~ .dropdown-menu {
 @media screen and (max-width: 480px) {
   .book-details-layout {
     padding: 16px;
+    margin: 10px 0px;
   }
 }
 

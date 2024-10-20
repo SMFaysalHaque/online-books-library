@@ -63,6 +63,79 @@ dropdownMenuElement2.addEventListener("click", (event) => {
   }
 });
 
+function showLoader() {
+  const loader = document.getElementById("loader-container-search");
+  if (loader.style.display === "none" || loader.style.display === "") {
+    loader.style.display = "block";
+  }
+}
+
+function hideLoader() {
+  const loader = document.getElementById("loader-container-search");
+  if (loader.style.display === "block") {
+    loader.style.display = "none";
+  }
+}
+
+const searchInput = document.getElementById("searchInput");
+const bookInfo = document.getElementById("book-info");
+const searchBook = document.getElementById("search-book");
+let booksArr = [];
+
+searchInput.addEventListener("input", (event) => {
+  const value = event.target.value.trim();
+  console.log(value);
+  if (value && value.length > 2) {
+    bookInfo.style.display = "block";
+    showLoader();
+    console.log(booksArr);
+
+    axios
+      .get(`https://gutendex.com/books?search=${value}`)
+      .then(function (response) {
+        const data = response.data.results;
+        console.log(data);
+
+        // Clear previous book info before appending new results
+        bookInfo.innerHTML = ""; // Ensure you're clearing the container
+
+        data.map((book) => {
+          console.log(book);
+          const imageUrl =
+            book.formats["image/jpeg"] || "/images/Image Not Found.jpg";
+          const foundBook = document.createElement("div");
+
+          foundBook.innerHTML = `
+              <div class="book-data">
+                <img src=${imageUrl} alt=${book.title} srcset="">
+                <div>
+                  <div>
+                    <p id="book-data-title">Title: ${book.title}</p>
+                  </div>
+                  <a href="book.html?ids=${book.id}" target="_self">
+                    <button id="book-data-btn">
+                      Detail
+                    </button>
+                  </a>
+                </div>
+              </div>
+            `;
+
+          bookInfo.appendChild(foundBook); // Append each book's data
+        });
+        hideLoader();
+      })
+      .catch(function (error) {
+        console.error("Error fetching data:", error);
+      });
+  } else {
+    bookInfo.style.display = "none";
+    // Clear book info when hiding
+    bookInfo.innerHTML = "";
+    hideLoader();
+  }
+});
+
 // wishlist dot
 function updateWishlistDot() {
   let wishlists = JSON.parse(localStorage.getItem("wishlists")) || [];
