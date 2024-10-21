@@ -43,7 +43,6 @@ dropdownButton2?.addEventListener("click", (event) => {
 const dropdownMenuElement = document.getElementById("dropdownMenu");
 dropdownMenuElement.addEventListener("click", (event) => {
   const target = event.target;
-  console.log(target);
 
   if (target.tagName === "LI") {
     const topic = target.id;
@@ -54,11 +53,9 @@ dropdownMenuElement.addEventListener("click", (event) => {
 const dropdownMenuElement2 = document.getElementById("dropdownMenu2");
 dropdownMenuElement2.addEventListener("click", (event) => {
   const target = event.target;
-  console.log(target);
 
   if (target.tagName === "LI") {
     const topic = target.id;
-    console.log(topic);
     window.location.href = `topic-wise.html?topic=${topic}`;
   }
 });
@@ -85,7 +82,6 @@ const typingDelay = 1000;
 
 searchInput.addEventListener("input", (event) => {
   const value = event.target.value.trim();
-  console.log(value);
 
   // Clear the previous timer
   clearTimeout(typingTimer);
@@ -100,12 +96,10 @@ searchInput.addEventListener("input", (event) => {
         .get(`https://gutendex.com/books?search=${value}`)
         .then(function (response) {
           const data = response.data.results;
-          console.log(data);
 
           bookInfo.innerHTML = "";
 
           data.map((book) => {
-            console.log(book);
             const imageUrl =
               book.formats["image/jpeg"] || "/images/Image Not Found.jpg";
             const foundBook = document.createElement("div");

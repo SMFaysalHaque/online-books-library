@@ -7,19 +7,24 @@ function getQueryParam(param) {
 // Initialize the wishlists array from localStorage (or empty array)
 let wishlists = JSON.parse(localStorage.getItem("wishlists")) || [];
 
-function showLoader() {
-  document.getElementById("loader-container").style.display = "block";
+function showTopicLoader() {
+  const loader = document.getElementById("loader-container");
+  if (loader.style.display === "none" || loader.style.display === "") {
+    loader.style.display = "block";
+  }
 }
 
-function hideLoader() {
-  document.getElementById("loader-container").style.display = "none";
+function hideTopicLoader() {
+  const loader = document.getElementById("loader-container");
+  if (loader.style.display === "block") {
+    loader.style.display = "none";
+  }
 }
 
 let topic = "";
 
 window.onload = function () {
   topic = getQueryParam("topic");
-  console.log(topic);
 
   if (topic) {
     fetchTopic(topic);
@@ -30,9 +35,8 @@ window.onload = function () {
   }
 };
 
-showLoader();
-
 function fetchTopic(topic) {
+  showTopicLoader();
   const apiUrl = `https://gutendex.com/books?topic=${topic}`;
   axios
     .get(apiUrl)
@@ -40,11 +44,11 @@ function fetchTopic(topic) {
       const books = response.data.results;
 
       displayBooks(books);
-      hideLoader();
+      hideTopicLoader();
     })
     .catch(function (error) {
       console.error("Error fetching data:", error);
-      hideLoader();
+      hideTopicLoader();
     });
 }
 
@@ -59,29 +63,27 @@ function displayBooks(books) {
 
       const bookDiv = document.createElement("div");
       bookDiv.innerHTML = `
-          <div class="card-layout">
-            <div>
-              <h1 style="font-weight: 700; margin-bottom: 20px;">${topic}</h1>
-              <img class="card-layout-img" src="${imageUrl}" alt="${
-        book.title
-      }" />
+      <div class="card-layout">
+      <div>
+      <h1 style="font-weight: 700; margin-bottom: 20px;">${topic}</h1>
+      <img class="card-layout-img" src="${imageUrl}" alt="${book.title}" />
               <h3 class="card-layout-title">${book.title}</h3>
               <p class="card-layout-author">
-                Author: ${book.authors.map((author) => author.name).join(", ")}
+              Author: ${book.authors.map((author) => author.name).join(", ")}
               </p>
-            </div>
-            <div style="display: flex; gap: 8px;">
+              </div>
+              <div style="display: flex; gap: 8px;">
               <a href="book.html?ids=${bookId}">
-                <button class="card-detail-btn">Details</button>
+              <button class="card-detail-btn">Details</button>
               </a>
               <button id="wishlist-btn-${bookId}" class="wishlist-btn">
-                <img src="/icons/red-heart${
-                  isBookInWishlist(bookId) ? "-fill" : ""
-                }.svg" alt="" />
-              </button>
-            </div>
-          </div>
-        `;
+              <img src="/icons/red-heart${
+                isBookInWishlist(bookId) ? "-fill" : ""
+              }.svg" alt="" />
+                </button>
+                </div>
+                </div>
+                `;
       bookListDiv.appendChild(bookDiv);
 
       const wishlistButton = document.getElementById(`wishlist-btn-${bookId}`);

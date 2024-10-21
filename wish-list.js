@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function fetchBooks(url) {
-    console.log("URL::", url);
     showLoader();
     const bookListDiv = document.getElementById("wishlists");
     bookListDiv.innerHTML = ""; // Clear existing content

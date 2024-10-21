@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
     axios
       .get(`https://gutendex.com/books?ids=${id}`)
       .then(function (response) {
-        console.log(response.data.results[0]);
         // handle success
         const bookInfo = response.data.results[0];
         const imageUrl =
