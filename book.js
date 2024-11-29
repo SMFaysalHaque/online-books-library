@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("loader-container").style.display = "block";
   }
 
+  // functions
   function hideLoader() {
     document.getElementById("loader-container").style.display = "none";
   }
