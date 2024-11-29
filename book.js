@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
         hideLoader();
       });
   }
-
+  // functions
   function showLoader() {
     document.getElementById("loader-container").style.display = "block";
   }
